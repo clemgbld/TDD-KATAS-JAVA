@@ -10,7 +10,8 @@ public class CountingDuplicates {
                 .mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
-                .stream().filter(e -> e.getValue() > 1)
+                .stream()
+                .filter(e -> e.getValue() > 1)
                 .count();
     }
 }
