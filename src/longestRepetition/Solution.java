@@ -1,26 +1,22 @@
 package longestRepetition;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
 public class Solution {
-
     public static Object[] longestRepetition(String s) {
-        if(s == "") return new Object[]{"",0};
-        var stringArr = s.toLowerCase().split("(?<=(.))(?!\\1)");
+        if(s.equals("")) return new Object[]{"",0};
 
-        var i = 0;
+        Map<String, Integer> map = Arrays.stream(s.toLowerCase().split("(?<=(.))(?!\\1)"))
+                .collect(Collectors.toMap(Function.identity(), String::length, (a, b) -> a, LinkedHashMap::new));
 
-        var map = new LinkedHashMap<String,Integer>();
+        Map.Entry<String,Integer> result = map.entrySet().stream().max(Map.Entry.comparingByValue()).get();
 
-        while(stringArr.length > i){
-            map.put(stringArr[i],stringArr[i].length());
-            i++;
-
-        }
-        var result = map.entrySet().stream().max(Map.Entry.comparingByValue()).get();
         return  new Object[]{String.valueOf(result.getKey().charAt(0)),result.getValue()};
 
     }
