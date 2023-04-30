@@ -1,7 +1,5 @@
 package writeNumberInExpandedForm;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.IntFunction;
 import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
