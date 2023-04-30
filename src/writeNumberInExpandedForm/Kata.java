@@ -2,35 +2,29 @@ package writeNumberInExpandedForm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.IntFunction;
+import java.util.function.IntPredicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 public class Kata {
     public static String expandedForm(int num) {
+        return IntStream.range(0,String.valueOf(num).length())
+                .filter(buildFilterIntPredicate(num))
+                .mapToObj(buildReplaceByZeroAfterFirstDigit(num))
+                .collect(Collectors.joining(" + "));
+    }
 
-        if(num == 0) return "0";
+    private static IntFunction<String> buildReplaceByZeroAfterFirstDigit(int num) {
+        return i -> getFirstDigitChar(num, i) + "0".repeat(String.valueOf(num).length() - 1 - i);
+    }
 
+    private static IntPredicate buildFilterIntPredicate(int num) {
+        return i -> getFirstDigitChar(num, i) != '0' || String.valueOf(num).length() == 1;
+    }
 
-        int i = 0;
-        List<String> numStr = new ArrayList<>();
-
-
-        while (String.valueOf(num).length() > i){
-            if(i == num - 1){
-                numStr.add(String.valueOf(num).substring(i));
-            }else {
-                char firstDigitChar = String.valueOf(num).substring(i).charAt(0);
-                if(firstDigitChar != '0'){
-                    numStr.add(firstDigitChar + "0".repeat(String.valueOf(num).length() - 1 - i));
-                }
-
-            }
-            i++;
-
-        }
-
-
-
-        return String.join(" + ", numStr);
-
+    private static char getFirstDigitChar(int num, int i) {
+        return String.valueOf(num).substring(i).charAt(0);
     }
 }
