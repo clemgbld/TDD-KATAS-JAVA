@@ -15,7 +15,7 @@ public class MazeRunner {
 
     public static String walk(int[][] maze, String[] directions) {
 
-        Coordinate position = findStartingPoint(maze);
+        Position position = findStartingPoint(maze);
 
         for (String direction : directions) {
             try {
@@ -36,26 +36,26 @@ public class MazeRunner {
     }
 
 
-    private static Coordinate findStartingPoint(int[][] matrix) {
+    private static Position findStartingPoint(int[][] matrix) {
         return IntStream.range(0, matrix.length)
                 .boxed()
                 .flatMap(y -> IntStream.range(0, matrix[y].length)
                         .filter(x -> matrix[y][x] == STARTING_POINT)
-                        .mapToObj(x -> new Coordinate(x, y))
+                        .mapToObj(x -> new Position(x, y))
                 ).findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Target not found"));
     }
 
-    public static class Coordinate extends Point {
+    public static class Position extends Point {
         public static final String S = "S";
         public static final String W = "W";
         public static final String E = "E";
 
-        public Coordinate(int x, int y) {
+        public Position(int x, int y) {
             super(x, y);
         }
 
-        public Coordinate move(String direction) {
+        public Position move(String direction) {
 
             switch (direction) {
                 case S -> setLocation(x, y + 1);
