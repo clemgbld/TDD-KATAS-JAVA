@@ -1,8 +1,7 @@
 package mazeRunner;
 
 import java.awt.*;
-import java.util.Arrays;
-import java.util.Optional;
+import java.util.stream.IntStream;
 
 public class MazeRunner {
 
@@ -38,26 +37,13 @@ public class MazeRunner {
 
 
     private static Coordinate findCoordinate(int[][] matrix, int target) {
-        return Optional.of(Arrays.stream(matrix)
-                .flatMapToInt(Arrays::stream)
+        return IntStream.range(0, matrix.length)
                 .boxed()
-                .filter(num -> num == target)
-                .mapToInt(num -> num)
-                .boxed()
-                .findFirst()
-                .map(num -> {
-                    int y = 0;
-                    int x = 0;
-                    for (int i = 0; i < matrix.length; i++) {
-                        for (int j = 0; j < matrix[i].length; j++) {
-                            if (matrix[i][j] == num) {
-                                y = i;
-                                x = j;
-                            }
-                        }
-                    }
-                    return new Coordinate(x, y);
-                })).get().get();
+                .flatMap(y -> IntStream.range(0, matrix[y].length)
+                        .filter(x -> matrix[y][x] == target)
+                        .mapToObj(x -> new Coordinate(x, y))
+                ).findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Target not found"));
     }
 
     public static class Coordinate extends Point {
