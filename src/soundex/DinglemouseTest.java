@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DinglemouseTest {
 
-
     @Test
     void shouldApplySoundex(){
        assertEquals("",Dinglemouse.soundex(""));
