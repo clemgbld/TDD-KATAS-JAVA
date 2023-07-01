@@ -17,13 +17,13 @@ public class Kata {
 
 
         List<Integer>  lastElementList = IntStream.range(0, ints.length)
-                .filter(i -> isOdd && i == Math.ceil(ints.length / 2))
+                .filter(i -> isOdd && i ==  Math.ceil( ints.length / 2))
                 .mapToObj(i -> ints[i])
                 .toList();
 
 
        int[] foldedArray = Stream.concat(coreList.stream(),lastElementList.stream())
-                .mapToInt(Number::intValue)
+                .mapToInt(Integer::intValue)
                 .toArray();
 
         return foldArray(foldedArray, runs -1);
