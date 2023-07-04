@@ -15,9 +15,6 @@ public class DeadFish {
        if(s.charAt(0) == 's') return parseRecur(s.substring(1), val * val , result);
        List<Integer> newResult = new ArrayList<>(result);
        newResult.add(val);
-        return parseRecur(s.substring(1), val , newResult);
-
+       return parseRecur(s.substring(1), val , newResult);
     }
-
-
 }
