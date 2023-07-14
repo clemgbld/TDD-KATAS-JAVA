@@ -12,7 +12,6 @@ public class PrintDynamicSetImplContent {
         this.logger = logger;
     }
 
-
     public void execute(String[] args) {
         Class<? extends Set<String>> cl;
         try {

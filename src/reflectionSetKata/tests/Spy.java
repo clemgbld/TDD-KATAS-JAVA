@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Spy {
 
-    private List<Object> params = new ArrayList<>();
+    private final List<Object> params = new ArrayList<>();
 
     public  Object firstCall() {
         return params.get(0);
