@@ -1,8 +1,6 @@
 package reflectionSetKata;
 
-public class JavaLogger implements Logger{
-    public JavaLogger() {
-    }
+public class SystemLogger implements Logger{
 
     @Override
     public void log(Object anyObject) {

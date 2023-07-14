@@ -43,6 +43,15 @@ class PrintDynamicSetImplContentTest {
         printDynamicSetImplContent.execute(new String[]{"java.util.HashSet"});
         assertEquals(new HashSet<String>(),spy.firstCall());
     }
+
+    @Test
+    void shouldLogThatThereIsNoImplementationOfSetChosen(){
+        var spy = new Spy();
+        PrintDynamicSetImplContent printDynamicSetImplContent = buildUseCase(spy);
+        printDynamicSetImplContent.execute(new String[]{});
+        assertEquals("No implementation of Set chosen",spy.firstCall());
+    }
+
     @Test
     void shouldLogASetWithItsContentSorted(){
         var spy = new Spy();

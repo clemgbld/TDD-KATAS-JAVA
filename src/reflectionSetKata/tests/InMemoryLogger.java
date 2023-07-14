@@ -2,8 +2,15 @@ package reflectionSetKata.tests;
 
 import reflectionSetKata.Logger;
 
+import java.util.Objects;
+
 public class InMemoryLogger implements Logger {
-    private final Spy spy;
+
+    private Spy spy = null;
+
+    public InMemoryLogger(){
+
+    }
 
     public InMemoryLogger(Spy spy) {
         this.spy = spy;
@@ -12,6 +19,7 @@ public class InMemoryLogger implements Logger {
 
     @Override
     public void log(Object anyObject) {
+        if(Objects.isNull(spy)) return;
         spy.call(anyObject);
     }
 }
