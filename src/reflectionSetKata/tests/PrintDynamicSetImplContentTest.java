@@ -24,7 +24,7 @@ class PrintDynamicSetImplContentTest {
     void shouldLogThatTheGivenClassHasNoParameterlessConstructor(){
         var spy = new Spy();
         PrintDynamicSetImplContent printDynamicSetImplContent = buildUseCase(spy);
-        printDynamicSetImplContent.execute(new String[]{"reflexionSetKata.Logger"});
+        printDynamicSetImplContent.execute(new String[]{"java.util.List"});
         assertEquals("This class has no parameterless constructor",spy.firstCall());
     }
 
