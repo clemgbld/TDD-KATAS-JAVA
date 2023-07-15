@@ -1,8 +1,8 @@
 # Reflection Set Kata
 
-Build a class that dynamically instantiate an implementation of Set (HashSet, TreeSet) and prints its content.
+Build a class that dynamically instantiate an implementation of a Set of string (HashSet, TreeSet etc…) and prints its content.
 
-You must use reflection to achieve this goal, and you must handle the following errors by logging those sentences :
+You must handle the following errors by logging those sentences :
 
 ClassNotFoundException: This class does not exist
 
