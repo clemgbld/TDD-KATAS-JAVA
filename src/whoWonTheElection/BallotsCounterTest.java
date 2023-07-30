@@ -9,9 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class BallotsCounterTest {
     @Test
     void shouldFindWhoWonTheElection(){
-        assertEquals(null, BallotsCounter.getWinner(List.of()));
+        assertNull(BallotsCounter.getWinner(List.of()));
         assertEquals("A", BallotsCounter.getWinner(List.of("A", "A", "A", "B", "B")));
-        assertEquals(null,BallotsCounter.getWinner(List.of("A", "A", "B", "B")));
+        assertNull(BallotsCounter.getWinner(List.of("A", "A", "B", "B")));
     }
 
 }
