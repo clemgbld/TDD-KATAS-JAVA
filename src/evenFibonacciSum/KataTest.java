@@ -1,17 +1,20 @@
 package evenFibonacciSum;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class KataTest {
-    @Test
-    void shouldMakeTheSumOfTheEvenNumbersInTheFibonacciSuiteForAGivenNumber(){
-        assertEquals(0L,Kata.fibonacci(0L));
-        assertEquals(2L,Kata.fibonacci(3L));
-        assertEquals(10L,Kata.fibonacci(10L));
-        assertEquals(44, Kata.fibonacci(100));
-        assertEquals(2, Kata.fibonacci(8));
+    @ParameterizedTest
+    @CsvSource({
+            "0, 0",
+            "3, 2",
+            "10, 10",
+            "100, 44",
+            "8, 2"
+    })
+    void shouldMakeTheSumOfTheEvenNumbersInTheFibonacciSuiteForAGivenNumber(long input, long expected) {
+        assertEquals(expected, Kata.fibonacci(input));
     }
-
 }
