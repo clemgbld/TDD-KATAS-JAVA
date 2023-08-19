@@ -12,7 +12,6 @@ class BookNumTest {
         assertEquals(13L,BookNum.pageDigits(11L));
         assertEquals(192, BookNum.pageDigits(100));
         assertEquals(2893, BookNum.pageDigits(1000));
-
     }
 
 }
