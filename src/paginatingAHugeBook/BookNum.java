@@ -3,9 +3,7 @@ package paginatingAHugeBook;
 
 
 public class BookNum {
-    public static long pageDigits(long pages) {
-        return pageDigitsRecur(pages,pages,9L);
-    }
+    public static long pageDigits(long pages) {return pageDigitsRecur(pages,pages,9L);}
 
     public static long pageDigitsRecur(long pages,long result,long max){
         if(pages <= max) return result;
