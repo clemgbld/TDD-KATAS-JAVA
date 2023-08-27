@@ -71,6 +71,7 @@ public class FSM {
         return sequenceValue == 0 ? nextStateLeft : nextStateRight;
     }
 
+
     private String buildName(String[] instructionsArr){
         return instructionsArr[0];
     }

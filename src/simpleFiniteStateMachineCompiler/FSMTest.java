@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FSMTest {
 
-
     @Test
     void shouldGiveTheCurrentStateTheCurrentValueAndAllStateTransition(){
         assertEquals(new Result("S1",9,"S1"),new FSM("S1; S1, S2; 9\n").runFSM("S1",new int[]{}));
