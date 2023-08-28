@@ -18,7 +18,6 @@ public class TheOffice {
         int takenChairs = takeChairs(calcAvailableChairs(rooms[i]),need);
         result.add(takenChairs);
         return meetingsRecur(rooms,i +1, need - takenChairs,result);
-
     }
 
     private static int calcAvailableChairs(Room rooms) {
